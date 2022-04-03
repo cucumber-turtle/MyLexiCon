@@ -1,0 +1,46 @@
+﻿<Window x:Class="MyLexiCon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyLexiCon"
+        mc:Ignorable="d"
+        Title="MyLexiCon" Height="450" Width="800">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" CanExecute="NewCommand_CanExecute" />
+        <CommandBinding Command="Search" Executed="SearchCommand_Executed" CanExecute="SearchCommand_CanExecute" />
+    </Window.CommandBindings>
+    <Grid>
+        <Menu DockPanel.Dock="Top" Height="25" Margin="0,-1,0.333,396.667">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Command="ApplicationCommands.New"/>
+                <MenuItem Header="Open" Command="ApplicationCommands.Open" />
+                <MenuItem Header="Save" Command="Save"/>
+                <MenuItem Header="Save as" Command="SaveAs"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+                <MenuItem Header="Bookmark" />
+                <MenuItem Header="Find" />
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Appearance"/>
+                <MenuItem Header="Font"/>
+                <MenuItem Header="Entries per page"/>
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="Search" Margin="511,24,43.333,369.667" Text="Search word from dictionary"/>
+        <Button x:Name="Enter" Margin="748,24,0.333,369.667" RenderTransformOrigin="0.5,0.5" Command="Search">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.123"/>
+                    <RotateTransform Angle="-0.179"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform> Enter
+        </Button>
+    </Grid>
+</Window>
