@@ -5,6 +5,13 @@ using System.Text;
 namespace LexiconApplication
 {
 	public class FileControl {
+		private static String fileName;
+		private static String filePath;
+		private static String langName;
+		private static String langVersion;
+		private static String langFont;
+		private static bool fileChanged;
+
 		public FileControl() { }
 		/**
 		 * Method for creating a new CSV file, given:
@@ -26,6 +33,12 @@ namespace LexiconApplication
 					byte[] encodedHeader = new UTF8Encoding(header + columns);
 					stream.Write(encodedHeader, 0, encodedHeader.Length);
                 }
+				this.fileName = fileName;
+				this.filePath = path;
+				this.langName = langName;
+				this.langVersion = langVersion;
+				this.langFont = langFont;
+				this.fileChanged = false;
 
 			} catch (Exception e)
             {
@@ -43,6 +56,7 @@ namespace LexiconApplication
 		 * Save changes into file.
 		 */
 		public static bool saveFile() {
+			this.fileChanged = false;
 			return true;
 		}
 
@@ -50,11 +64,12 @@ namespace LexiconApplication
 		 * Save changes into the file name defined by the user.
 		 */
 		public static bool saveFileAs() {
+			this.fileChanged = false;
 			return true;
 		}
 
 		private static bool canChangeFile() {
-			return false;	
+			return !this.fileChanged;
 		}
 	}
 }
